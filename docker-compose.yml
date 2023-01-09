@@ -1,0 +1,19 @@
+version: '3'
+
+
+services:  
+  pyscript:
+    image: chaz003/py_runner:1.3
+    container_name: scenefixer
+
+
+    volumes:
+      #point the data folder to this script folder
+      - ./:/data 
+      - /path/to/your/HASS/config/folder:/HASS
+    environment:
+      - TZ=America/New_York
+
+    command: python -u sceneFixer.py
+
+    restart: unless-stopped
